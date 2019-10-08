@@ -23,13 +23,13 @@ describe('AppComponent', () => {
   it(`should have as title 'hacker-news'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('hacker-news');
+    expect(app.title).toEqual('Hacker News');
   });
 
-  it('should render title in a h1 tag', () => {
+  it('should render title in a span tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to hacker-news!');
+    expect(compiled.querySelector('span').textContent).toContain('Hacker News');
   });
 });

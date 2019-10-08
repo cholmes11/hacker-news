@@ -1,0 +1,40 @@
+<ng-container *ngIf="story.type === ItemType.STORY">
+  <div class="story-container" fxLayout="row" fxLayoutAlign="start center">
+    <div class="story-info" fxFlex="5" fxLayout="row" fxLayoutAlign="center">
+      <span class="info">{{ index }}</span><br/>
+    </div>
+
+    <div class="story-info" fxFlex="85">
+      <p class="title">{{ story.title }}</p>
+      <ng-container *ngIf="urlDomain != null">
+        <div class="url" (click)="navigateToUrl()"><span>{{ urlDomain }}</span></div>
+      </ng-container>
+      <span class="info">By {{ story.by }} - {{ story.time * 1000 | dateAgo }} - {{ story.descendants }} comments</span>
+    </div>
+
+    <div class="story-score" fxFlex="10" fxLayout="row" fxLayoutAlign="center">
+      <span>{{story.score}}</span>
+      <button mat-icon-button (click)="vote()">
+        <mat-icon>expand_less</mat-icon>
+      </button>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="story.type === ItemType.JOB">
+  <div class="story-container" fxLayout="row" fxLayoutAlign="start center">
+    <div class="story-info" fxFlex="5" fxLayout="row" fxLayoutAlign="center">
+      <span class="info">{{ index }}</span><br/>
+    </div>
+
+    <div class="story-info" fxFlex="85">
+      <p class="title">{{ story.title }}</p>
+      <ng-container *ngIf="urlDomain != null">
+        <div class="url" (click)="navigateToUrl()"><span>{{ urlDomain }}</span></div>
+      </ng-container>
+      <span class="info">{{ story.time * 1000 | dateAgo }}</span>
+    </div>
+  </div>
+</ng-container>
+
+

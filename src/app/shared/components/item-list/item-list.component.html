@@ -1,0 +1,12 @@
+<div class="main-content">
+  <app-story-item class="story" *ngFor="let story of stories"
+                  [index]="getStoryIndex(story)"
+                  [story]="story"></app-story-item>
+
+  <ng-container *ngIf="storyIDs != null">
+    <div *ngIf="endIndex < storyIDs.length"
+         style="display: flex; align-items: center; justify-content: center;">
+      <button mat-raised-button color="primary" (click)="loadMoreStories()">Load more stories</button>
+    </div>
+  </ng-container>
+</div>
