@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {CookieService} from 'ngx-cookie-service';
 
 export class AppRoute {
   constructor(
@@ -25,11 +26,21 @@ export class AppComponent implements OnInit {
     new AppRoute('Jobs', '/jobs')
   ];
 
-  activeRoute = this.appRoutes[0];
+  activeRoute: AppRoute; // = this.appRoutes[0];
 
-  constructor() {
+  constructor(
+    private cookieService: CookieService
+  ) {
   }
 
   ngOnInit() {
+    const lastActiveRoute = this.cookieService.get('last-active-route');
+
+    if (lastActiveRoute != null && lastActiveRoute.length > 0) {
+      const index = this.appRoutes.findIndex((route: AppRoute) => route.routerLink === lastActiveRoute);
+      this.activeRoute = this.appRoutes[index];
+    } else {
+      this.activeRoute = this.appRoutes[0];
+    }
   }
 }

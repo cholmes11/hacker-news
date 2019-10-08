@@ -30,7 +30,7 @@ export class ItemListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cookieService.set('activeRoute', this.router.url);
+    this.cookieService.set('last-active-route', this.router.url);
     this.activatedRoute.data.subscribe((data: {
       itemType: ItemType,
       sortByTime: boolean
